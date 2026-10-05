@@ -1,0 +1,87 @@
+/* ──────────────────────────────────────────────
+   SJ Interiors Admin — Brand Tokens (Light theme default, matching public site)
+   ────────────────────────────────────────────── */
+:root {
+  /* Primary brand colors — same as public site */
+  --admin-primary: #6E45C9;
+  --admin-primary-light: #8b6ce0;
+  --admin-primary-dark: #4a2d8f;
+  --admin-secondary: #D8BC73;
+  --admin-success: #28a745;
+  --admin-danger: #dc3545;
+  --admin-info: #17a2b8;
+
+  /* Light theme (default — matches public site) */
+  --admin-bg: #f7f3fb;
+  --admin-bg-gradient: radial-gradient(circle at top left, rgba(110, 69, 201, 0.08), transparent 30%), linear-gradient(180deg, #fcfafe 0%, #f7f3fb 50%, #ffffff 100%);
+  --admin-surface: #ffffff;
+  --admin-surface-hover: #f4f0fa;
+  --admin-border: rgba(110, 69, 201, 0.1);
+  --admin-text: #24153f;
+  --admin-text-muted: #6f6780;
+  --admin-text-dim: #9a90a8;
+
+  /* Sidebar — slightly darker than content but not black */
+  --admin-sidebar-bg: #1e1433;
+  --admin-sidebar-text: rgba(255, 255, 255, 0.85);
+  --admin-sidebar-text-muted: rgba(255, 255, 255, 0.5);
+  --admin-sidebar-hover: rgba(110, 69, 201, 0.2);
+  --admin-sidebar-active: rgba(110, 69, 201, 0.3);
+  --admin-sidebar-border: rgba(255, 255, 255, 0.08);
+
+  --admin-sidebar-width: 15rem;
+  --admin-bottom-nav-height: 5rem;
+  --admin-radius: 0.75rem;
+  --admin-shadow: 0 2px 12px rgba(110, 69, 201, 0.08);
+  --admin-shadow-sm: 0 1px 6px rgba(110, 69, 201, 0.05);
+}
+
+/* ──────────────────────────────────────────────
+   Print Stylesheet for Document Client Portal
+   ────────────────────────────────────────────── */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt !important;
+  }
+  .d-print-none,
+  .admin-sidebar,
+  .admin-mobile-header,
+  .admin-bottom-nav,
+  .admin-footer,
+  .modal,
+  .toast,
+  .admin-loading-bar,
+  #adminMobileDrawer,
+  .client-portal-sticky-bar {
+    display: none !important;
+  }
+  .admin-layout,
+  .admin-content-wrap,
+  .admin-app,
+  .admin-shell,
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .card, .admin-surface-card {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+  .table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+  .table th, .table td {
+    padding: 6px 8px !important;
+    font-size: 9pt !important;
+  }
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+}

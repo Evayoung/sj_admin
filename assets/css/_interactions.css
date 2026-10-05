@@ -1,0 +1,225 @@
+/* ──────────────────────────────────────────────
+   SJ Interiors Admin — Interactions (Light theme)
+   ────────────────────────────────────────────── */
+.admin-nav-btn {
+  background: rgba(110, 69, 201, 0.08);
+  color: var(--admin-primary);
+  border: 1px solid rgba(110, 69, 201, 0.15);
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.admin-nav-btn:hover {
+  background: rgba(110, 69, 201, 0.15);
+  color: var(--admin-primary);
+  transform: translateY(-1px);
+}
+
+.admin-install-btn {
+  background: rgba(216, 188, 115, 0.08);
+  color: #b8860b;
+  border: 1px solid rgba(216, 188, 115, 0.2);
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.admin-install-btn:hover {
+  background: rgba(216, 188, 115, 0.15);
+  color: #b8860b;
+}
+
+/* Form controls — light theme */
+.form-control,
+.form-select {
+  background: white;
+  border: 1px solid var(--admin-border);
+  color: var(--admin-text);
+  border-radius: 0.5rem;
+  padding: 0.55rem 0.75rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--admin-primary);
+  box-shadow: 0 0 0 0.2rem rgba(110, 69, 201, 0.1);
+}
+
+.form-control::placeholder { color: var(--admin-text-dim); }
+
+.form-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--admin-text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.form-check-input:checked {
+  background-color: var(--admin-primary);
+  border-color: var(--admin-primary);
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--admin-primary);
+  border-color: var(--admin-primary);
+}
+
+.btn-primary:hover {
+  background: var(--admin-primary-dark);
+  border-color: var(--admin-primary-dark);
+}
+
+.btn-outline-secondary {
+  color: var(--admin-text-muted);
+  border-color: var(--admin-border);
+}
+
+.btn-outline-secondary:hover {
+  background: var(--admin-surface-hover);
+  color: var(--admin-text);
+  border-color: var(--admin-primary);
+}
+
+/* Filter pills & bar */
+.admin-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 767.98px) {
+  .admin-filter-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 0.25rem;
+  }
+  .admin-filter-bar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.filter-pill {
+  white-space: nowrap;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none !important;
+}
+
+.filter-pill:hover {
+  transform: translateY(-1px);
+}
+
+.filter-pill.is-active,
+.filter-pill.active {
+  background-color: var(--admin-primary) !important;
+  border-color: var(--admin-primary) !important;
+  color: white !important;
+}
+
+/* Modern toast card visual polish */
+.modern-toast-card {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.modern-toast-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Workspace panels — light */
+.admin-workspace {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  min-height: 60vh;
+}
+
+.admin-panel {
+  background: white;
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  overflow: hidden;
+}
+
+.admin-panel-header {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--admin-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-panel-body {
+  padding: 0.85rem 1rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 14rem);
+}
+
+/* List items */
+.admin-list-item {
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid var(--admin-border);
+  cursor: pointer;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.admin-list-item:hover { background: var(--admin-surface-hover); }
+
+.admin-list-item.active {
+  background: rgba(110, 69, 201, 0.08);
+  border-left: 3px solid var(--admin-primary);
+}
+
+.admin-list-item:last-child { border-bottom: none; }
+
+/* Settings cards — light */
+.admin-settings-card {
+  background: white;
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.admin-settings-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--admin-text);
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--admin-border);
+}
+
+/* HTMX loading */
+button.htmx-request {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+button.htmx-request::after {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  top: 50%; left: 50%;
+  margin: -0.5rem 0 0 -0.5rem;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: admin-spin 0.6s linear infinite;
+}
+
+@keyframes admin-spin { to { transform: rotate(360deg); } }
+
+/* Responsive */
+@media (max-width: 991.98px) {
+  .admin-workspace { grid-template-columns: 1fr; }
+  .admin-panel-body { max-height: none; }
+}

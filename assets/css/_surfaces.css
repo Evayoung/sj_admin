@@ -1,0 +1,144 @@
+/* ──────────────────────────────────────────────
+   SJ Interiors Admin — Surfaces (Light theme)
+   ────────────────────────────────────────────── */
+.admin-surface-card {
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  box-shadow: var(--admin-shadow-sm);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.admin-surface-card:hover {
+  border-color: rgba(110, 69, 201, 0.2);
+  box-shadow: var(--admin-shadow);
+}
+
+.admin-metric-icon-wrap {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background: rgba(110, 69, 201, 0.1);
+  color: var(--admin-primary);
+  flex-shrink: 0;
+}
+
+.admin-metric-icon { font-size: 1.1rem; }
+
+.admin-empty-icon {
+  font-size: 3rem;
+  color: var(--admin-text-dim);
+  margin-bottom: 1rem;
+}
+
+.admin-empty-title {
+  font-weight: 600;
+  color: var(--admin-text);
+  margin-bottom: 0.5rem;
+}
+
+.admin-empty-message {
+  color: var(--admin-text-muted);
+  max-width: 24rem;
+  margin: 0 auto;
+}
+
+/* Status badges */
+.admin-status-new { background: rgba(110, 69, 201, 0.1); color: var(--admin-primary); }
+.admin-status-contacted { background: rgba(23, 162, 184, 0.1); color: var(--admin-info); }
+.admin-status-ordered { background: rgba(40, 167, 69, 0.1); color: var(--admin-success); }
+.admin-status-closed { background: rgba(108, 103, 128, 0.1); color: var(--admin-text-muted); }
+.admin-status-draft { background: rgba(108, 103, 128, 0.1); color: var(--admin-text-muted); }
+.admin-status-sent { background: rgba(23, 162, 184, 0.1); color: var(--admin-info); }
+.admin-status-accepted { background: rgba(40, 167, 69, 0.1); color: var(--admin-success); }
+.admin-status-declined { background: rgba(220, 53, 69, 0.1); color: var(--admin-danger); }
+.admin-status-paid { background: rgba(40, 167, 69, 0.1); color: var(--admin-success); }
+.admin-status-processing { background: rgba(216, 188, 115, 0.15); color: #b8860b; }
+.admin-status-shipped { background: rgba(23, 162, 184, 0.1); color: var(--admin-info); }
+.admin-status-delivered { background: rgba(40, 167, 69, 0.1); color: var(--admin-success); }
+.admin-status-cancelled { background: rgba(220, 53, 69, 0.1); color: var(--admin-danger); }
+
+/* Settings Tabs Card & Internal Horizontal Scroll */
+.settings-tabs-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  background: var(--admin-surface, #ffffff) !important;
+  border: 1px solid var(--admin-border, rgba(0, 0, 0, 0.08)) !important;
+  border-radius: var(--admin-radius, 1rem) !important;
+}
+
+.settings-tabs-scroll {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  white-space: nowrap !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(111, 66, 193, 0.25) transparent !important;
+  padding: 0.5rem 0.65rem !important;
+  margin: 0 !important;
+}
+
+.settings-tabs-scroll::-webkit-scrollbar {
+  height: 4px !important;
+}
+
+.settings-tabs-scroll::-webkit-scrollbar-thumb {
+  background: rgba(111, 66, 193, 0.25) !important;
+  border-radius: 4px !important;
+}
+
+.settings-tabs-scroll ul {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 0.5rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  min-width: max-content !important;
+}
+
+.settings-tabs-scroll li {
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+}
+
+.settings-nav-tab {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+  padding: 0.42rem 0.95rem !important;
+  font-size: 0.84rem !important;
+  font-weight: 500 !important;
+  border-radius: 9999px !important;
+  color: #4b5563 !important;
+  background-color: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  text-decoration: none !important;
+  transition: all 0.15s ease-in-out !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+}
+
+.settings-nav-tab:hover {
+  background-color: #f3e8ff !important;
+  color: #6b21a8 !important;
+  border-color: #d8b4fe !important;
+}
+
+.settings-nav-tab.active,
+.settings-nav-tab.active:focus,
+.settings-tabs-scroll .nav-link.active.settings-nav-tab {
+  background-color: #6f42c1 !important;
+  color: #ffffff !important;
+  border-color: #6f42c1 !important;
+  box-shadow: 0 2px 6px rgba(111, 66, 193, 0.25) !important;
+}

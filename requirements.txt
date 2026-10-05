@@ -1,0 +1,7 @@
+python-fasthtml>=0.12.33
+faststrap>=0.6.1
+supabase>=2.0
+python-dotenv
+reportlab>=4.0
+cachetools>=5.3.0
+

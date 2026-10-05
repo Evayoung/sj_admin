@@ -1,0 +1,19 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.env
+.vercel
+Thumbs.db
+.DS_Store
+assets/generated/
+
+# Session key (auto-generated)
+.sesskey
+
+# Audit text files
+emoji_audit*.txt
+
+# Screenshots
+screenshots/

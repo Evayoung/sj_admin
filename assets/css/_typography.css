@@ -1,0 +1,67 @@
+/* ──────────────────────────────────────────────
+   SJ Interiors Admin — Typography (Light theme)
+   ────────────────────────────────────────────── */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--admin-text);
+}
+
+h1, h2, h3, h4, h5, h6,
+.admin-page-title,
+.admin-section-title,
+.admin-metric-value,
+.admin-brand-title {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.admin-kicker {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--admin-primary);
+  margin-bottom: 0.35rem;
+}
+
+.admin-page-title {
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--admin-text);
+}
+
+.admin-page-header-divider {
+  width: 2.5rem;
+  height: 3px;
+  background: var(--admin-primary);
+  border-radius: 2px;
+  margin: 0.5rem 0;
+}
+
+.admin-page-copy {
+  color: var(--admin-text-muted);
+  font-size: 0.9rem;
+  max-width: 32rem;
+}
+
+.admin-section-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--admin-text);
+  margin-bottom: 0.85rem;
+}
+
+.admin-metric-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--admin-text-muted);
+  margin-bottom: 0.15rem;
+}
+
+.admin-metric-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--admin-text);
+  line-height: 1;
+}
