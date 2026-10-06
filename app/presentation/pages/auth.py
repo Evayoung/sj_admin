@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from fasthtml.common import A, Button, Div, Form, H1, Input, Label, P, Small, Span, Title
+from fasthtml.common import A, Button, Div, Form, H1, Input, Label, NotStr, P, Small, Span, Strong, Title
 from faststrap import Icon
 
 from app.presentation.page_helpers import status_alert
@@ -40,7 +40,7 @@ def login_page(next_path: str = "/", error: str = "", success: str = "") -> tupl
                                 required=True,
                                 autofocus=True,
                                 cls="form-control",
-                                placeholder="e.g. fatima@sjinteriors.com or fatima",
+                                placeholder="e.g. alademercy93@gmail.com",
                             ),
                             cls="mb-3",
                         ),
@@ -83,7 +83,7 @@ def forgot_password_page(error: str = "", success: str = "", reset_link: str = "
     """Render password recovery request page."""
     error_div = status_alert(error) if error else ""
     success_div = Div(
-        Div(Icon("check-circle-fill", cls="me-2 text-success"), Span(success), cls="d-flex align-items-center"),
+        Div(Icon("check-circle-fill", cls="me-2 text-success flex-shrink-0"), Span(NotStr(success)), cls="d-flex align-items-start gap-1"),
         cls="alert alert-success py-2 small mb-3",
     ) if success else ""
 
@@ -123,7 +123,7 @@ def forgot_password_page(error: str = "", success: str = "", reset_link: str = "
                                 required=True,
                                 autofocus=True,
                                 cls="form-control",
-                                placeholder="e.g. fatima@sjinteriors.com",
+                                placeholder="e.g. alademercy93@gmail.com",
                             ),
                             cls="mb-3",
                         ),
