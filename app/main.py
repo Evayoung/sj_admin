@@ -34,7 +34,7 @@ def _require_admin_login(req, session):
     return Redirect(f"/login?next_path={quote(next_path, safe='/?=&')}")
 
 
-JS_VERSION = "20260724"
+JS_VERSION = "20261006"
 
 app = FastHTML(secret_key=settings.secret_key, session_cookie=settings.session_cookie)
 app.before.append(

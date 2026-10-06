@@ -1,6 +1,929 @@
-/* SJ Interiors Admin — Custom CSS Entry Point */
-@import url("_brand.css");
-@import url("_typography.css");
-@import url("_layout.css");
-@import url("_surfaces.css");
-@import url("_interactions.css");
+/* SJ Interiors Admin — Combined CSS (auto-built from partials) */
+
+/* ====== _brand.css ====== */
+/* ──────────────────────────────────────────────
+   SJ Interiors Admin — Brand Tokens (Light theme default, matching public site)
+   ────────────────────────────────────────────── */
+:root {
+  /* Primary brand colors — same as public site */
+  --admin-primary: #6E45C9;
+  --admin-primary-light: #8b6ce0;
+  --admin-primary-dark: #4a2d8f;
+  --admin-secondary: #D8BC73;
+  --admin-success: #28a745;
+  --admin-danger: #dc3545;
+  --admin-info: #17a2b8;
+
+  /* Light theme (default — matches public site) */
+  --admin-bg: #f7f3fb;
+  --admin-bg-gradient: radial-gradient(circle at top left, rgba(110, 69, 201, 0.08), transparent 30%), linear-gradient(180deg, #fcfafe 0%, #f7f3fb 50%, #ffffff 100%);
+  --admin-surface: #ffffff;
+  --admin-surface-hover: #f4f0fa;
+  --admin-border: rgba(110, 69, 201, 0.1);
+  --admin-text: #24153f;
+  --admin-text-muted: #6f6780;
+  --admin-text-dim: #9a90a8;
+
+  /* Sidebar — slightly darker than content but not black */
+  --admin-sidebar-bg: #1e1433;
+  --admin-sidebar-text: rgba(255, 255, 255, 0.85);
+  --admin-sidebar-text-muted: rgba(255, 255, 255, 0.5);
+  --admin-sidebar-hover: rgba(110, 69, 201, 0.2);
+  --admin-sidebar-active: rgba(110, 69, 201, 0.3);
+  --admin-sidebar-border: rgba(255, 255, 255, 0.08);
+
+  --admin-sidebar-width: 15rem;
+  --admin-bottom-nav-height: 5rem;
+  --admin-radius: 0.75rem;
+  --admin-shadow: 0 2px 12px rgba(110, 69, 201, 0.08);
+  --admin-shadow-sm: 0 1px 6px rgba(110, 69, 201, 0.05);
+}
+
+/* ──────────────────────────────────────────────
+   Print Stylesheet for Document Client Portal
+   ────────────────────────────────────────────── */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt !important;
+  }
+  .d-print-none,
+  .admin-sidebar,
+  .admin-mobile-header,
+  .admin-bottom-nav,
+  .admin-footer,
+  .modal,
+  .toast,
+  .admin-loading-bar,
+  #adminMobileDrawer,
+  .client-portal-sticky-bar {
+    display: none !important;
+  }
+  .admin-layout,
+  .admin-content-wrap,
+  .admin-app,
+  .admin-shell,
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .card, .admin-surface-card {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+  .table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+  .table th, .table td {
+    padding: 6px 8px !important;
+    font-size: 9pt !important;
+  }
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+}
+
+/* ====== _typography.css ====== */
+/* ──────────────────────────────────────────────
+   SJ Interiors Admin — Typography (Light theme)
+   ────────────────────────────────────────────── */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--admin-text);
+}
+
+h1, h2, h3, h4, h5, h6,
+.admin-page-title,
+.admin-section-title,
+.admin-metric-value,
+.admin-brand-title {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.admin-kicker {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--admin-primary);
+  margin-bottom: 0.35rem;
+}
+
+.admin-page-title {
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--admin-text);
+}
+
+.admin-page-header-divider {
+  width: 2.5rem;
+  height: 3px;
+  background: var(--admin-primary);
+  border-radius: 2px;
+  margin: 0.5rem 0;
+}
+
+.admin-page-copy {
+  color: var(--admin-text-muted);
+  font-size: 0.9rem;
+  max-width: 32rem;
+}
+
+.admin-section-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--admin-text);
+  margin-bottom: 0.85rem;
+}
+
+.admin-metric-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--admin-text-muted);
+  margin-bottom: 0.15rem;
+}
+
+.admin-metric-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--admin-text);
+  line-height: 1;
+}
+
+/* ====== _layout.css ====== */
+/* ──────────────────────────────────────────────
+   SJ Interiors Admin — Layout (Light theme, compact sidebar)
+   ────────────────────────────────────────────── */
+body {
+  background: var(--admin-bg-gradient);
+  color: var(--admin-text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Desktop grid — sidebar is fixed so main content spans full width */
+.admin-layout {
+  display: block;
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* ── Sidebar ─────────────────────────────────── */
+.admin-sidebar {
+  width: var(--admin-sidebar-width);
+  flex-shrink: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  padding: 1rem 0.75rem;
+  background: var(--admin-sidebar-bg);
+  border-right: 1px solid var(--admin-sidebar-border);
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 1020;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.15) transparent;
+}
+
+/* Push main content area to the right of the fixed sidebar */
+@media (min-width: 992px) {
+  .admin-app {
+    margin-left: var(--admin-sidebar-width);
+  }
+}
+
+.admin-sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+/* Brand block */
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  padding: 0.5rem 0.6rem;
+}
+
+.admin-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, var(--admin-primary), var(--admin-primary-dark));
+  color: white;
+  font-weight: 800;
+  font-size: 0.75rem;
+  font-family: 'Space Grotesk', sans-serif;
+  flex-shrink: 0;
+}
+
+.admin-logo-letter { line-height: 1; }
+.admin-logo-letter-alt { opacity: 0.7; }
+
+.admin-brand-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--admin-sidebar-text);
+  display: block;
+  line-height: 1.2;
+}
+
+.admin-brand-subtitle {
+  font-size: 0.55rem;
+  color: var(--admin-sidebar-text-muted);
+  display: block;
+}
+
+/* Sidebar groups — card-like containers */
+.admin-sidebar-group,
+.admin-sidebar-panel {
+  padding: 0.65rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.admin-sidebar-kicker {
+  font-size: 0.55rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--admin-sidebar-text-muted);
+  padding: 0 0.15rem;
+  display: block;
+}
+
+/* Override Faststrap SidebarNavbar for compact look */
+.admin-sidebar-nav.sidebar-navbar {
+  width: 100% !important;
+  min-height: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0;
+  margin-top: 0.4rem;
+}
+
+.admin-sidebar-nav .nav {
+  gap: 0.25rem;
+  padding-inline: 0 !important;
+}
+
+.admin-sidebar-nav .nav-link {
+  padding: 0.35rem 0.55rem !important;
+  font-size: 0.78rem !important;
+  border-radius: 0.35rem !important;
+  color: var(--admin-sidebar-text) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.admin-sidebar-nav .nav-link:hover {
+  background: var(--admin-sidebar-hover) !important;
+  color: white !important;
+}
+
+.admin-sidebar-nav .nav-link.active {
+  background: var(--admin-sidebar-active) !important;
+  color: white !important;
+}
+
+.admin-nav-icon {
+  width: 1rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.admin-sidebar-actions {
+  display: grid;
+  gap: 0.4rem;
+}
+
+/* ── Content area ────────────────────────────── */
+.admin-content-wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.admin-app {
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.admin-shell {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.admin-page-header { margin-bottom: 1.5rem; }
+
+/* ── Footer ──────────────────────────────────── */
+.admin-footer {
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--admin-border);
+  margin-top: auto;
+}
+
+.admin-footer-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--admin-text-dim);
+}
+
+.admin-footer-link {
+  color: var(--admin-text-muted);
+  text-decoration: none;
+}
+
+.admin-footer-link:hover { color: var(--admin-primary); }
+.admin-footer-sep { color: var(--admin-text-dim); }
+
+/* ── Mobile header ───────────────────────────── */
+.admin-mobile-header {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  background: white;
+  border-bottom: 1px solid var(--admin-border);
+  padding: 0.6rem 0;
+}
+
+.admin-mobile-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-mobile-brand { text-decoration: none; }
+
+.admin-mobile-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--admin-text);
+}
+
+/* ── Bottom nav ──────────────────────────────── */
+.admin-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--admin-bottom-nav-height);
+  z-index: 1030;
+  background: white;
+  border-top: 1px solid var(--admin-border);
+}
+
+.admin-bottom-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+  color: var(--admin-text-dim);
+  text-decoration: none;
+  font-size: 0.6rem;
+  transition: color 0.2s;
+}
+
+.admin-bottom-link.active { color: var(--admin-primary); }
+.admin-bottom-small { font-size: 0.55rem; }
+
+/* ── Loading bar ─────────────────────────────── */
+.admin-loading-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--admin-primary);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.htmx-request .admin-loading-bar,
+.htmx-settling .admin-loading-bar { opacity: 1; }
+
+/* ── Mobile adjustments ──────────────────────── */
+@media (max-width: 991.98px) {
+  .admin-shell {
+    padding-bottom: calc(var(--admin-bottom-nav-height) + 1rem);
+  }
+}
+
+/* ── Mobile drawer ───────────────────────────── */
+/* Match the dark sidebar background on mobile */
+.admin-mobile-drawer .offcanvas,
+#adminMobileDrawer {
+  background: var(--admin-sidebar-bg) !important;
+  color: var(--admin-sidebar-text) !important;
+  border-right: 1px solid var(--admin-sidebar-border) !important;
+}
+
+.admin-mobile-drawer .offcanvas-header,
+#adminMobileDrawer .offcanvas-header {
+  background: var(--admin-sidebar-bg) !important;
+  border-bottom: 1px solid var(--admin-sidebar-border) !important;
+  color: var(--admin-sidebar-text) !important;
+}
+
+.admin-mobile-drawer .btn-close,
+#adminMobileDrawer .btn-close {
+  filter: invert(1) grayscale(1) brightness(2) !important;
+  opacity: 0.7 !important;
+}
+
+.admin-mobile-drawer-body {
+  padding: 1rem;
+  background: var(--admin-sidebar-bg);
+}
+
+.admin-mobile-drawer-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-sidebar-links {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.admin-sidebar-links .admin-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.4rem;
+  color: var(--admin-text);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.admin-sidebar-links .admin-nav-link:hover {
+  background: var(--admin-surface-hover);
+}
+
+.admin-sidebar-links .admin-nav-link.active {
+  background: rgba(110, 69, 201, 0.08);
+  color: var(--admin-primary);
+}
+
+/* ── Login page ──────────────────────────────── */
+.admin-login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--admin-bg-gradient);
+}
+
+.admin-login-wrap {
+  width: 100%;
+  max-width: 24rem;
+  padding: 2rem;
+}
+
+.admin-login-card {
+  background: white;
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  padding: 2.5rem;
+  box-shadow: 0 8px 32px rgba(110, 69, 201, 0.1);
+}
+
+.admin-login-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-login-logo-letter {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--admin-primary);
+}
+
+.admin-login-logo-letter-alt { opacity: 0.6; }
+
+.admin-login-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--admin-text);
+  margin-bottom: 0.5rem;
+}
+
+.admin-login-subtitle {
+  text-align: center;
+  color: var(--admin-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* ====== _surfaces.css ====== */
+/* ──────────────────────────────────────────────
+   SJ Interiors Admin — Surfaces (Light theme)
+   ────────────────────────────────────────────── */
+.admin-surface-card {
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  box-shadow: var(--admin-shadow-sm);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.admin-surface-card:hover {
+  border-color: rgba(110, 69, 201, 0.2);
+  box-shadow: var(--admin-shadow);
+}
+
+.admin-metric-icon-wrap {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background: rgba(110, 69, 201, 0.1);
+  color: var(--admin-primary);
+  flex-shrink: 0;
+}
+
+.admin-metric-icon { font-size: 1.1rem; }
+
+.admin-empty-icon {
+  font-size: 3rem;
+  color: var(--admin-text-dim);
+  margin-bottom: 1rem;
+}
+
+.admin-empty-title {
+  font-weight: 600;
+  color: var(--admin-text);
+  margin-bottom: 0.5rem;
+}
+
+.admin-empty-message {
+  color: var(--admin-text-muted);
+  max-width: 24rem;
+  margin: 0 auto;
+}
+
+/* Status badges */
+.admin-status-new { background: rgba(110, 69, 201, 0.1); color: var(--admin-primary); }
+.admin-status-contacted { background: rgba(23, 162, 184, 0.1); color: var(--admin-info); }
+.admin-status-ordered { background: rgba(40, 167, 69, 0.1); color: var(--admin-success); }
+.admin-status-closed { background: rgba(108, 103, 128, 0.1); color: var(--admin-text-muted); }
+.admin-status-draft { background: rgba(108, 103, 128, 0.1); color: var(--admin-text-muted); }
+.admin-status-sent { background: rgba(23, 162, 184, 0.1); color: var(--admin-info); }
+.admin-status-accepted { background: rgba(40, 167, 69, 0.1); color: var(--admin-success); }
+.admin-status-declined { background: rgba(220, 53, 69, 0.1); color: var(--admin-danger); }
+.admin-status-paid { background: rgba(40, 167, 69, 0.1); color: var(--admin-success); }
+.admin-status-processing { background: rgba(216, 188, 115, 0.15); color: #b8860b; }
+.admin-status-shipped { background: rgba(23, 162, 184, 0.1); color: var(--admin-info); }
+.admin-status-delivered { background: rgba(40, 167, 69, 0.1); color: var(--admin-success); }
+.admin-status-cancelled { background: rgba(220, 53, 69, 0.1); color: var(--admin-danger); }
+
+/* Settings Tabs Card & Internal Horizontal Scroll */
+.settings-tabs-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  background: var(--admin-surface, #ffffff) !important;
+  border: 1px solid var(--admin-border, rgba(0, 0, 0, 0.08)) !important;
+  border-radius: var(--admin-radius, 1rem) !important;
+}
+
+.settings-tabs-scroll {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  white-space: nowrap !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(111, 66, 193, 0.25) transparent !important;
+  padding: 0.5rem 0.65rem !important;
+  margin: 0 !important;
+}
+
+.settings-tabs-scroll::-webkit-scrollbar {
+  height: 4px !important;
+}
+
+.settings-tabs-scroll::-webkit-scrollbar-thumb {
+  background: rgba(111, 66, 193, 0.25) !important;
+  border-radius: 4px !important;
+}
+
+.settings-tabs-scroll ul {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 0.5rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  min-width: max-content !important;
+}
+
+.settings-tabs-scroll li {
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+}
+
+.settings-nav-tab {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+  padding: 0.42rem 0.95rem !important;
+  font-size: 0.84rem !important;
+  font-weight: 500 !important;
+  border-radius: 9999px !important;
+  color: #4b5563 !important;
+  background-color: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  text-decoration: none !important;
+  transition: all 0.15s ease-in-out !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+}
+
+.settings-nav-tab:hover {
+  background-color: #f3e8ff !important;
+  color: #6b21a8 !important;
+  border-color: #d8b4fe !important;
+}
+
+.settings-nav-tab.active,
+.settings-nav-tab.active:focus,
+.settings-tabs-scroll .nav-link.active.settings-nav-tab {
+  background-color: #6f42c1 !important;
+  color: #ffffff !important;
+  border-color: #6f42c1 !important;
+  box-shadow: 0 2px 6px rgba(111, 66, 193, 0.25) !important;
+}
+
+/* ====== _interactions.css ====== */
+/* ──────────────────────────────────────────────
+   SJ Interiors Admin — Interactions (Light theme)
+   ────────────────────────────────────────────── */
+.admin-nav-btn {
+  background: rgba(110, 69, 201, 0.08);
+  color: var(--admin-primary);
+  border: 1px solid rgba(110, 69, 201, 0.15);
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.admin-nav-btn:hover {
+  background: rgba(110, 69, 201, 0.15);
+  color: var(--admin-primary);
+  transform: translateY(-1px);
+}
+
+.admin-install-btn {
+  background: rgba(216, 188, 115, 0.08);
+  color: #b8860b;
+  border: 1px solid rgba(216, 188, 115, 0.2);
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.admin-install-btn:hover {
+  background: rgba(216, 188, 115, 0.15);
+  color: #b8860b;
+}
+
+/* Form controls — light theme */
+.form-control,
+.form-select {
+  background: white;
+  border: 1px solid var(--admin-border);
+  color: var(--admin-text);
+  border-radius: 0.5rem;
+  padding: 0.55rem 0.75rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--admin-primary);
+  box-shadow: 0 0 0 0.2rem rgba(110, 69, 201, 0.1);
+}
+
+.form-control::placeholder { color: var(--admin-text-dim); }
+
+.form-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--admin-text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.form-check-input:checked {
+  background-color: var(--admin-primary);
+  border-color: var(--admin-primary);
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--admin-primary);
+  border-color: var(--admin-primary);
+}
+
+.btn-primary:hover {
+  background: var(--admin-primary-dark);
+  border-color: var(--admin-primary-dark);
+}
+
+.btn-outline-secondary {
+  color: var(--admin-text-muted);
+  border-color: var(--admin-border);
+}
+
+.btn-outline-secondary:hover {
+  background: var(--admin-surface-hover);
+  color: var(--admin-text);
+  border-color: var(--admin-primary);
+}
+
+/* Filter pills & bar */
+.admin-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 767.98px) {
+  .admin-filter-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 0.25rem;
+  }
+  .admin-filter-bar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.filter-pill {
+  white-space: nowrap;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none !important;
+}
+
+.filter-pill:hover {
+  transform: translateY(-1px);
+}
+
+.filter-pill.is-active,
+.filter-pill.active {
+  background-color: var(--admin-primary) !important;
+  border-color: var(--admin-primary) !important;
+  color: white !important;
+}
+
+/* Modern toast card visual polish */
+.modern-toast-card {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.modern-toast-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Workspace panels — light */
+.admin-workspace {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  min-height: 60vh;
+}
+
+.admin-panel {
+  background: white;
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  overflow: hidden;
+}
+
+.admin-panel-header {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--admin-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-panel-body {
+  padding: 0.85rem 1rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 14rem);
+}
+
+/* List items */
+.admin-list-item {
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid var(--admin-border);
+  cursor: pointer;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.admin-list-item:hover { background: var(--admin-surface-hover); }
+
+.admin-list-item.active {
+  background: rgba(110, 69, 201, 0.08);
+  border-left: 3px solid var(--admin-primary);
+}
+
+.admin-list-item:last-child { border-bottom: none; }
+
+/* Settings cards — light */
+.admin-settings-card {
+  background: white;
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.admin-settings-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--admin-text);
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--admin-border);
+}
+
+/* HTMX loading */
+button.htmx-request {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+button.htmx-request::after {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  top: 50%; left: 50%;
+  margin: -0.5rem 0 0 -0.5rem;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: admin-spin 0.6s linear infinite;
+}
+
+@keyframes admin-spin { to { transform: rotate(360deg); } }
+
+/* Responsive */
+@media (max-width: 991.98px) {
+  .admin-workspace { grid-template-columns: 1fr; }
+  .admin-panel-body { max-height: none; }
+}
